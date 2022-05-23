@@ -1,5 +1,9 @@
 #!/bin/bash
-cd docker
-sudo docker-compose down
+cd express
+npm install
+cd ../web
+npm install
+cd ../docker
+docker-compose down
 sudo chown -R 27:sudo ./sql/data
-sudo docker-compose up -d --build
+docker-compose up -d --build
