@@ -1,0 +1,56 @@
+version: "3.8"
+services:
+  db:
+    container_name: db
+    image: mysql/mysql-server:8.0.29 # Imatge a instal·lar
+    restart: always
+    volumes:
+      - "./sql/my.cnf:/etc/my.cnf"
+      - "./sql/data:/var/lib/mysql"
+    ports:
+      - "8806:3306" # Port localhost:container per a la base de dades
+#  phpmyadmin:
+#    image: phpmyadmin/phpmyadmin
+#    container_name: pma
+#    depends_on:
+#      - db
+#    links:
+#      - db
+#    environment:
+#      PMA_PORT: 3306
+#      PMA_ARBITRARY: 1
+#    restart: always
+#    ports:
+#      - "8888:80"
+
+  express:
+    container_name: express
+    depends_on:
+      - db
+    links:
+      - db
+    build: ../express
+    restart: always
+    env_file: ./.env
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    stdin_open: true
+    tty: true
+    volumes:
+      - ../express:/usr/src/webserver
+
+  react:
+    container_name: react
+    depends_on:
+      - express
+    links:
+      - express
+    build: ../web
+    restart: always
+    env_file: ./.env
+    ports:
+      - "3999:3000"
+    stdin_open: true
+    tty: true
+    volumes:
+      - ../web:/usr/src/webserver
