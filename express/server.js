@@ -27,7 +27,7 @@ app.listen(8080, () => {
     console.log("Server is running on port 8080.");
 
     // Intervalo (1 día) para recargar automáticamente los productos
-    // setInterval(() => {
-    //     generalManager.reloadProducts();
-    // }, 86400000)
+    setInterval(() => {
+        generalManager.reloadProducts();
+    }, 86400000)
 })

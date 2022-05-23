@@ -48,7 +48,7 @@ function Cart() {
 
                                 {
                                 cart.length === 0 ? (
-                                    <tr>
+                                    <tr key={-1}>
                                         <td className="p-3">Añade productos para verlos en el carrito</td>
                                     </tr> 
                                 ) : (
@@ -57,7 +57,8 @@ function Cart() {
                                         let price = prices.filter((price) => {
                                             return price.shop_id === selectedShop.id && price.product_id === product.id;
                                         });
-                                        return (<tr>
+                                        return (
+                                            <tr key={product.id}>
                                                 <td data-th="Product">
                                                     <div className="row">
                                                         <div className="col-md-3 text-left">

@@ -47,10 +47,6 @@ function ShopsAside () {
                                         </div>
                                     </div>
                                 )
-                            } else {
-                                return (
-                                    <></>
-                                )
                             }
                         })
                     }

@@ -23,7 +23,7 @@ function ProductInfo() {
                 products && shops && prices && cart && products.map((product) => {
                     if (product.id.toString() === id) {
                         return (
-                            <div id="productInfo" className="col-8 p-3 my-3 mx-auto">
+                            <div key={product.id} id="productInfo" className="col-8 p-3 my-3 mx-auto">
                                 <div className="productInfo mx-auto">
                                     <div className="p-3 align-self-center text-center">
                                         {
@@ -66,7 +66,7 @@ function ProductInfo() {
                                                 shops.map((shop) => {
                                                     if (shop.id !== selectedShop.id) {
                                                         return (
-                                                            <li className="list-group-item bg-transparent">
+                                                            <li key={shop.id} className="list-group-item bg-transparent">
                                                                 {shop.name} ({
                                                                 parseFloat(prices.filter((price) => {
                                                                     return price.shop_id === shop.id && price.product_id.toString() === id;
