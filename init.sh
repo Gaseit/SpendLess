@@ -1,9 +1,9 @@
 #!/bin/bash
-# Intalación de los modulos para el servidor express
+# Instalación de los modulos para el servidor express
 cd express
 npm install
 
-# Intalación de los modulos para react
+# Instalación de los modulos para react
 cd ../web
 npm install
 
