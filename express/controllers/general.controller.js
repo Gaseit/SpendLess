@@ -43,7 +43,7 @@ generalManager.getAll = async(req, res) => {
 }
 
 /**
- * Funció per a recarregar els productes de la carpeta
+ * Función para recargar los productos de la carpeta
  */
 generalManager.reloadProducts = (req, res) => {
     let products_path = path.join(__dirname, "../products");

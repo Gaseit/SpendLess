@@ -7,26 +7,26 @@ const app = express();
 const cors = require('cors');
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-// Ruta per a obtenir informació d'un producte en específic.
+// Ruta para obtener información de un producto específico.
 app.get('/products/:id', productManager.getById);
 
-// Ruta per a obtenir una sola botiga
+// Ruta para obtener una única tienda
 app.get('/shop', shopManager.getOne);
 
-// Ruta per obtenir tots els productes, totes les botigues i tots els preus
+// Ruta per obtener todos los productos, todas las tiendas i todos los precios
 app.get('/all', generalManager.getAll);
 
-// Ruta per recarregar els productes de la carpeta
+// Ruta para recargar los productos de la carpeta
 app.get("/reload", generalManager.reloadProducts)
 
-// Iniciem el servidor
+// Iniciar servidor
 app.listen(8080, () => {
     console.log("Server is running on port 8080.");
 
-    // Interval per a recarregar automaticament els productes cada dia
+    // Intervalo (1 día) para recargar automáticamente los productos
     // setInterval(() => {
     //     generalManager.reloadProducts();
     // }, 86400000)
