@@ -28,7 +28,7 @@ function ProductInfo() {
                                     <div className="p-3 align-self-center text-center">
                                         {
                                             product ?
-                                                <img src={product.image} alt={product.name} className="img-fluid"/>
+                                                <img src={product.image} alt={product.name} className="img-fluid imgFormat"/>
                                                 : <i className="far fa-image fa-5x m-2"></i>
                                         }
                                     </div>
